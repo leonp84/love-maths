@@ -13,9 +13,14 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 })
 
+/**
+ * The main game "loop" that will popup when you now over over where the function is called - since you used Docstrings!
+ */
 function runGame() {
-
+    let num1 = Math.floor(Math.random() * 25) + 1;
+    let num2 = Math.floor(Math.random() * 25) + 1;
 }
+
 
 function checkAnswer() {
     
