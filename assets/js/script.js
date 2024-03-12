@@ -23,7 +23,20 @@ function runGame(gameType) {
     let num2 = Math.floor(Math.random() * 25) + 1;
 
     if (gameType === "addition") {
-        displayAdditionQuestion(num1, num2);
+        console.log("You've clicked addition");
+        displayAdditionQuestion(num1, num2); }
+    else if (gameType === "subtract") {
+        (num1 < num2) ? displaySubtractQuestion(num2, num1) : displaySubtractQuestion(num1, num2)}
+    else if (gameType === "multiply") {
+        if (num1 > 10) { num1 = Math.floor(num1 / 2); }
+        if (num2 > 10) { num2 = Math.floor(num2 / 2); }
+        displayMultiplyQuestion(num1, num2);
+    } else if (gameType === "division") {
+        while (num1/num2 % 1 != 0) {
+            num2 = Math.floor(Math.random() * 100) + 1;
+            num1 = Math.floor(Math.random() * 50) + 1;
+          }
+        displayDivisionQuestion(num1, num2);
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Uknown game type: ${gameType}. Aborting;`
@@ -59,6 +72,12 @@ function calculateCorrectAnswer() {
 
     if (operator === "+") {
         return [operand1 + operand2, "addition"]
+    } else if (operator === "-") {
+        return [operand1 - operand2, "subtract"]
+    } else if (operator === "x") {
+        return [operand1 * operand2, "multiply"]
+    } else if (operator === "÷") {
+        return [operand1 / operand2, "division"]
     } else {
         alert(`No go... not with ${operator}. Fix it!`);
         throw `No go... not with ${operator}. Aborting`;
@@ -89,10 +108,20 @@ function displayAdditionQuestion(operand1, operand2) {
     document.getElementById('operator').textContent = "+";
 }
 
-function displaySubtractQuestion() {
-    
+function displaySubtractQuestion(operand1, operand2) {
+    document.getElementById('operand1').textContent = operand1;
+    document.getElementById('operand2').textContent = operand2;
+    document.getElementById('operator').textContent = "-";
 }
 
-function displayMultiplyQuestion() {
-    
+function displayMultiplyQuestion(operand1, operand2) {
+    document.getElementById('operand1').textContent = operand1;
+    document.getElementById('operand2').textContent = operand2;
+    document.getElementById('operator').textContent = "x";
+}
+
+function displayDivisionQuestion(operand1, operand2) {
+    document.getElementById('operand1').textContent = operand1;
+    document.getElementById('operand2').textContent = operand2;
+    document.getElementById('operator').textContent = "÷";
 }
