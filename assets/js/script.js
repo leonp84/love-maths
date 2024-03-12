@@ -12,6 +12,10 @@ document.addEventListener("DOMContentLoaded", function(){
         })
     }
 
+    document.getElementById('answer-box').addEventListener('keydown', function(event) {
+        if (event.key === "Enter") { checkAnswer() }
+    })
+
     runGame("addition");
 })
 
@@ -19,6 +23,10 @@ document.addEventListener("DOMContentLoaded", function(){
  * The main game "loop" whose descr. will popup when you now hover over where the function is called - since you used Docstrings!
  */
 function runGame(gameType) {
+
+    document.getElementById('answer-box').value = "";
+    document.getElementById('answer-box').focus();
+
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
 
@@ -33,8 +41,8 @@ function runGame(gameType) {
         displayMultiplyQuestion(num1, num2);
     } else if (gameType === "division") {
         while (num1/num2 % 1 != 0) {
-            num2 = Math.floor(Math.random() * 100) + 1;
-            num1 = Math.floor(Math.random() * 50) + 1;
+            num2 = Math.floor(Math.random() * 500) + 1;
+            num1 = Math.floor(Math.random() * 499) + 1;
           }
         displayDivisionQuestion(num1, num2);
     } else {
